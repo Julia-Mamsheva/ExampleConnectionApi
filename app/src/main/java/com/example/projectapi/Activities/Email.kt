@@ -1,4 +1,4 @@
-package com.example.projectapi
+package com.example.projectapi.Activities
 
 import android.content.ContentValues
 import android.os.Bundle

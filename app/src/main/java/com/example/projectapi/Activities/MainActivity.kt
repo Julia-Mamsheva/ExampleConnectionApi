@@ -1,4 +1,4 @@
-package com.example.projectapi
+package com.example.projectapi.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.projectapi.Api.AdapterCharacter
 import com.example.projectapi.Api.ApiRequest
+import com.example.projectapi.Fragments.ItemInformationDialogFragment
 import com.example.projectapi.Model.Result
 import com.example.projectapi.Model.RickAndMorty
 import com.example.projectapi.databinding.ActivityMainBinding
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity(), AdapterCharacter.Listener {
     {
         binding.nextPageEmail.setOnClickListener()
         {
-            startActivity(Intent(this,Email::class.java))
+            startActivity(Intent(this, Email::class.java))
         }
     }
     private fun getData() {
@@ -75,5 +76,10 @@ class MainActivity : AppCompatActivity(), AdapterCharacter.Listener {
 
     override fun OnClick(result: Result) {
       // Здесь будут обрабатываться действия при клике на объект
+        val itemListDialogFragment = ItemInformationDialogFragment() //Создаем объект фрагмента
+        val bundle = Bundle() //Bundle - представляет собой контейнер, который может содержать массивы или значения любого типа данных
+        bundle.putSerializable("iteminformation", result)  // 1 параметр - уникальный ключ передачи данных, 2 параметр - данные, которые передаем
+        itemListDialogFragment.arguments = bundle // Передаем данные
+        itemListDialogFragment.show(supportFragmentManager, "pop") // Запускаем наш фрагмент
     }
 }
