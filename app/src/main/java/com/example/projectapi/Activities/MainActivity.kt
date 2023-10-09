@@ -37,6 +37,10 @@ class MainActivity : AppCompatActivity(), AdapterCharacter.Listener {
         {
             startActivity(Intent(this, Email::class.java))
         }
+        binding.nextPageImageLoad.setOnClickListener()
+        {
+            startActivity(Intent(this, ImageLoadActivity::class.java))
+        }
     }
     private fun getData() {
         val api = Retrofit.Builder()
